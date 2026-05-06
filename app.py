@@ -8,7 +8,9 @@ if st.button("genrate QR"):
   if data:
     qr = qrcode.make(data)
     qr.save("qr.png")
-    img = Image(img, caption="genrated QR code")
+    
+    img = Image.open("qr.png")
+    st.image(img, caption="Genrated QR code")
     with open("qr.png","rb")as f:
       st.download_button("Download QR",f,file_name="qr.png")
   else:
